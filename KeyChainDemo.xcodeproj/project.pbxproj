@@ -13,6 +13,8 @@
 		DADC48901F9B20C0009C3B54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADC488F1F9B20C0009C3B54 /* Assets.xcassets */; };
 		DADC48931F9B20C0009C3B54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC48911F9B20C0009C3B54 /* LaunchScreen.storyboard */; };
 		DADC48961F9B20C0009C3B54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DADC48951F9B20C0009C3B54 /* main.m */; };
+		DADC489E1F9B21AA009C3B54 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DADC489D1F9B21AA009C3B54 /* KeychainItemWrapper.m */; };
+		DADC48A11F9DC3E3009C3B54 /* NEKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = DADC48A01F9DC3E3009C3B54 /* NEKeyChain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		DADC48921F9B20C0009C3B54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DADC48941F9B20C0009C3B54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DADC48951F9B20C0009C3B54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DADC489C1F9B21AA009C3B54 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		DADC489D1F9B21AA009C3B54 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		DADC489F1F9DC3E3009C3B54 /* NEKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEKeyChain.h; sourceTree = "<group>"; };
+		DADC48A01F9DC3E3009C3B54 /* NEKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEKeyChain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 		DADC48851F9B20C0009C3B54 /* KeyChainDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DADC489C1F9B21AA009C3B54 /* KeychainItemWrapper.h */,
+				DADC489D1F9B21AA009C3B54 /* KeychainItemWrapper.m */,
 				DADC48861F9B20C0009C3B54 /* AppDelegate.h */,
 				DADC48871F9B20C0009C3B54 /* AppDelegate.m */,
 				DADC48891F9B20C0009C3B54 /* ViewController.h */,
@@ -67,6 +75,8 @@
 				DADC48911F9B20C0009C3B54 /* LaunchScreen.storyboard */,
 				DADC48941F9B20C0009C3B54 /* Info.plist */,
 				DADC48951F9B20C0009C3B54 /* main.m */,
+				DADC489F1F9DC3E3009C3B54 /* NEKeyChain.h */,
+				DADC48A01F9DC3E3009C3B54 /* NEKeyChain.m */,
 			);
 			path = KeyChainDemo;
 			sourceTree = "<group>";
@@ -142,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADC489E1F9B21AA009C3B54 /* KeychainItemWrapper.m in Sources */,
 				DADC488B1F9B20C0009C3B54 /* ViewController.m in Sources */,
+				DADC48A11F9DC3E3009C3B54 /* NEKeyChain.m in Sources */,
 				DADC48961F9B20C0009C3B54 /* main.m in Sources */,
 				DADC48881F9B20C0009C3B54 /* AppDelegate.m in Sources */,
 			);
@@ -281,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LH7676BHR;
 				INFOPLIST_FILE = KeyChainDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XY.KeyChainDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LH7676BHR;
 				INFOPLIST_FILE = KeyChainDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XY.KeyChainDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
