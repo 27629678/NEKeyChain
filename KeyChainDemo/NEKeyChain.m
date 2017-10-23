@@ -95,6 +95,10 @@
 
 - (void)addData:(NSData *)data forKey:(NSString *)key
 {
+    // delete if need
+    SecItemDelete((__bridge CFDictionaryRef)[self queryDictWithKey:key]);
+    
+    // add new sec item
     OSStatus result = SecItemAdd((__bridge CFDictionaryRef)[self emptyItemWithKey:key data:data], NULL);
     
     NSCAssert(result == errSecSuccess, @"Could not add item.");
@@ -115,24 +119,28 @@
 
 - (NSDictionary *)emptyItemWithKey:(NSString *)key data:(NSData *)data
 {
-    return @{ (__bridge id)kSecClass        : (__bridge id)kSecClassGenericPassword,
-              (__bridge id)kSecAttrAccount  : key ? : @"",
-              (__bridge id)kSecAttrService  : self.service,
-              (__bridge id)kSecAttrGeneric  : self.identifier,
-              (__bridge id)kSecAttrLabel    : @"",
-              (__bridge id)kSecAttrDescription : @"",
-              (__bridge id)kSecAttrAccessible : (__bridge id)kSecAttrAccessibleAlwaysThisDeviceOnly,
-              (__bridge id)kSecValueData    : data,
-              };
+    NSMutableDictionary *dict = [[self commonDictWithKey:key] mutableCopy];
+    [dict setObject:@"" forKey:(__bridge id)kSecAttrLabel];
+    [dict setObject:@"" forKey:(__bridge id)kSecAttrDescription];
+    [dict setObject:data forKey:(__bridge id)kSecValueData];
+    
+    return dict;
 }
 
 - (NSDictionary *)queryDictWithKey:(NSString *)key
+{
+    NSMutableDictionary *dict = [[self commonDictWithKey:key] mutableCopy];
+    [dict setObject:(__bridge id)kSecMatchLimitOne forKey:(__bridge id)kSecMatchLimit];
+    
+    return dict;
+}
+
+- (NSDictionary *)commonDictWithKey:(NSString *)key
 {
     return @{ (__bridge id)kSecClass        : (__bridge id)kSecClassGenericPassword,
               (__bridge id)kSecAttrAccount  : key ? : @"",
               (__bridge id)kSecAttrService  : self.service,
               (__bridge id)kSecAttrGeneric  : self.identifier,
-              (__bridge id)kSecMatchLimit   : (__bridge id)kSecMatchLimitOne,
               (__bridge id)kSecAttrAccessible : (__bridge id)kSecAttrAccessibleAlwaysThisDeviceOnly,
               };
 }
